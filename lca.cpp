@@ -1,61 +1,13 @@
 /*
 Least Common Ancestor
-Given an n-ary tree, find the LCA of three values.
+Given an n-ary tree, find the LCA of a set of values.
 There are no repeated values in the tree
-node {
+
+
+struct node {
     int val;
-    list<node&> children;
-}
-                                4
-                             / / \ \
-                            2 16 7 8
-                           /\
-                         100 5
-                         / \
-                        121 1
-
-Nodes              LCA
-100, 5, 1           2
-100, 5, 121         2
-100, 5 ,2           4
-4, 121, 5           null
-100, 5, 2000        null
-
-node& findLCA(const node &root, unordered_set<int> &values )
-{
-    for( auto &child : root->children) {
-        if( values.find(child->val) != values.end() )
-        {
-            values.remove(child->val);
-        }
-    }
-    
-    if(values.empty()) 
-    {
-        return root;
-    }
-
-    int count = 0;
-    node lca;
-    for( auto &child : root->children) {
-        lca = findLCA(child, values);
-        if (lca) count++;
-          
-        if(values.empty()) {
-            break;
-        }
-    }
-
-    if (count == 0) return nullptr;
-    if (count == 1) return lca;
-    return root;
-}
-
-node findLCA(int a, int b, int c, const node &root) {
-    unordered_set<int> &values {a,b,c};
-    if (values.find(root->val) != values.end()) return nullptr;
-    return findLCA(root, values);
-}
+    list<node*> children;
+};
 
 */
 #include <iostream>
