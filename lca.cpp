@@ -87,15 +87,6 @@ pair<node*, int> findLCA( node *root, unordered_set<int> &values )
   return {nullptr,total};
 }
 
-int findLCA(int a, int b, int c,  node *root) {
-    unordered_set<int> values {a,b,c};
-    auto [lca, cnt] = findLCA(root, values);
-    if (lca)
-      return lca->val;
-    else
-      return -1;
-}
-
 node* buildTree(vector<int> &values)
 {
   deque<node *> dq;
@@ -128,9 +119,14 @@ void printTree(const node* root)
 int main()
 {
   vector<int> v { 4, 2, 16, 7, 8, -1, 100, 5, -1, -1, -1, 200, 22, 3, 14, -1, 111, 121, 1};
+  unordered_set<int> lca_input {3, 14, 100, 1};
   node* root = buildTree(v);
   printTree(root);
   cout << "++++++" << endl;
-  cout << "LCA " << findLCA(4,5,100, root) << endl;
+  auto lca = findLCA(root, lca_input);
+  if (lca.first)
+    cout << "LCA " << lca.first->val << endl;
+  else
+    cout << "LCA can't be determined" << endl;
   return 0;
 }
