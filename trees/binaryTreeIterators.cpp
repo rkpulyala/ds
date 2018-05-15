@@ -1,3 +1,12 @@
+#include <stack>
+
+struct node {
+  /* data fields */
+  int key;
+  node *left;
+  node *right;
+};
+
 class PreorderBinaryTreeIterator {
   std::stack<node*> nodeStack;
 
