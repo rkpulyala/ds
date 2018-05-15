@@ -7,11 +7,11 @@ struct node {
   node *right;
 };
 
-class PreorderBinaryTreeIterator {
+class PreOrderBinaryTreeIterator {
   std::stack<node*> nodeStack;
 
 public:
-  PreorderBinaryTreeIterator(node* root) {
+  PreOrderBinaryTreeIterator(node* root) {
     if (root) nodeStack.push(root);
   }
 
@@ -28,11 +28,11 @@ public:
   
 };
 
-class PreorderBinaryTreeIterator {
+class InOrderBinaryTreeIterator {
   std::stack<node*> nodeStack;
 
 public:
-  PreorderBinaryTreeIterator(node* root) {
+  InOrderBinaryTreeIterator(node* root) {
     while (root) {
       nodeStack.push(root);
       root = root->left;
